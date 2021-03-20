@@ -8,6 +8,14 @@ use Illuminate\Http\JsonResponse;
 
 class ProductController extends Controller
 {
+
+    public function __construct()
+    {
+        $this->middleware('permission:manager')->only(['store', 'update', 'destroy']);
+        $this->middleware('permission:admin')->only('destroy');
+    }
+
+
     /**
      * Display a listing of the resource.
      *

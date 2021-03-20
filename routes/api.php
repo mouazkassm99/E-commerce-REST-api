@@ -5,7 +5,7 @@ use App\Http\Controllers\ProductController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
-Route::group(['middleware'=>['auth:api', 'test']], function (){
+Route::group(['middleware'=>'auth:api'], function (){
 
     Route::group(['prefix'=>'{user}/cart'], function (){
         /*
@@ -23,12 +23,13 @@ Route::group(['middleware'=>['auth:api', 'test']], function (){
    /*
     * Product resource
     * */
-   Route::apiResource('product', ProductController::class);
+   Route::apiResource('product', ProductController::class)  ;
 });
 
 Route::get('test', function (\Illuminate\Http\Request $request){
-    return \App\Models\User::with('role')->find(8);
-});
+//    return \App\Models\User::with('role')->find($request->id);
+    return $request->user();
+})->middleware('permission:admin');
 
 Route::post('/login', [UserController::class, 'login']);
 Route::post('/register', [UserController::class, 'register']);
