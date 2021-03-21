@@ -2,18 +2,19 @@
 
 namespace Database\Factories;
 
+use App\Models\Cart;
 use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
-use Illuminate\Support\Str;
 
-class UserFactory extends Factory
+class CartFactory extends Factory
 {
+
     /**
      * The name of the factory's corresponding model.
      *
      * @var string
      */
-    protected $model = User::class;
+    protected $model = Cart::class;
 
     /**
      * Define the model's default state.
@@ -22,12 +23,14 @@ class UserFactory extends Factory
      */
     public function definition()
     {
+
+        static $order = 1;
         return [
-            'name' => $this->faker->name,
-            'email' => $this->faker->unique()->safeEmail,
-            'password' => 'password', // password
-            'role_id' => rand(1, 3),
+            'user_id' => $order++,
         ];
     }
 
+    /**
+     * @return int
+     */
 }

@@ -26,6 +26,13 @@ class CartController extends Controller
             $user->refresh();
         }
 
+
+        /*
+         * product is {
+         *  'product_id':X
+         *  'quantity':Y
+         * }
+         * */
         $products = $request->products;
 
         foreach ($products as $product){

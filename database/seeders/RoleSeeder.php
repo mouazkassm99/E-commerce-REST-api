@@ -18,16 +18,22 @@ class RoleSeeder extends Seeder
         DB::table('roles')->insert([
             'name' => 'Admin',
             'slug' => 'admin',
+            'created_at' => \Carbon\Carbon::now(),
+            'updated_at' => \Carbon\Carbon::now(),
         ]);
 
         DB::table('roles')->insert([
             'name' => 'User',
             'slug' => 'user',
+            'created_at' => \Carbon\Carbon::now(),
+            'updated_at' => \Carbon\Carbon::now(),
         ]);
 
         DB::table('roles')->insert([
             'name' => 'Manager',
             'slug' => 'manager',
+            'created_at' => \Carbon\Carbon::now(),
+            'updated_at' => \Carbon\Carbon::now(),
         ]);
     }
 }

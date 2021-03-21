@@ -14,9 +14,10 @@ class CreateCartProductTable extends Migration
     public function up()
     {
         Schema::create('cart_product', function (Blueprint $table) {
-            $table->id();
+//            $table->id();
             $table->foreignId('cart_id');
             $table->foreignId('product_id');
+            $table->integer('quantity')->default(1);
             $table->timestamps();
         });
     }

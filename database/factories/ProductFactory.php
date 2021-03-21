@@ -2,18 +2,17 @@
 
 namespace Database\Factories;
 
-use App\Models\User;
+use App\Models\Product;
 use Illuminate\Database\Eloquent\Factories\Factory;
-use Illuminate\Support\Str;
 
-class UserFactory extends Factory
+class ProductFactory extends Factory
 {
     /**
      * The name of the factory's corresponding model.
      *
      * @var string
      */
-    protected $model = User::class;
+    protected $model = Product::class;
 
     /**
      * Define the model's default state.
@@ -24,10 +23,10 @@ class UserFactory extends Factory
     {
         return [
             'name' => $this->faker->name,
-            'email' => $this->faker->unique()->safeEmail,
-            'password' => 'password', // password
-            'role_id' => rand(1, 3),
+            'price' => $this->faker->numberBetween(500, 1000),
+            'category' => array_rand(['mobile', 'pc', 'laptop']),
+            'description' => $this->faker->text(200),
+            'gallery' => 'https://i.gadgets360cdn.com/products/large/1555507135_635_samsung_galaxy_a60.jpg',
         ];
     }
-
 }
