@@ -43,6 +43,6 @@ class User extends Authenticatable
 
     public function hasRole($role): bool
     {
-        return $this->role->slug ?? NULL == $role;
+        return optional($this->role)->slug == $role;
     }
 }

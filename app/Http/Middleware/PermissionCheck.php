@@ -18,10 +18,12 @@ class PermissionCheck
      */
     public function handle(Request $request, Closure $next, $role)
     {
-        if($request->user()->hasRole($role)){
+
+        if(optional($request->user())->hasRole($role)){
             return $next($request);
+        }else {
+            abort(403, 'not authenticated');
         }
-        abort(403, 'not authenticated8');
 
     }
 

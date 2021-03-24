@@ -28,7 +28,8 @@ Route::group(['middleware'=>'auth:api'], function (){
 
 Route::get('test', function (\Illuminate\Http\Request $request){
 //    return \App\Models\User::with('role')->find($request->id);
-    return $request->user();
+    echo "in test \n";
+    return auth()->user();
 })->middleware('permission:admin');
 
 Route::post('/login', [UserController::class, 'login']);
